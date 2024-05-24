@@ -5,11 +5,12 @@ import SingleButton from './SingleButton';
 function ButtonsNav(setIsbool) {
     const [dynamicData, setDynamicData] = useState([]);
     
+    
 
     useEffect(() => { 
         const fetchData = async () => {
             try {
-                const {data} = await axios.get('./data.json'); // Adjust the path if needed
+                 const {data} = await axios.get('./data.json'); // Adjust the path if needed
                 setDynamicData(data.buttonList);
                
             } catch (error) {
@@ -23,7 +24,7 @@ function ButtonsNav(setIsbool) {
 
     return (
         <section>
-            <div style={{ width: '90%' }}>
+            <div style={{ width: '93%' }}>
                 <div className="ButtonsNav">
                     {dynamicData.map((button) => 
                     {                  
@@ -33,11 +34,13 @@ function ButtonsNav(setIsbool) {
                             url={button.activityList[0].url}
                             setIsbool={setIsbool}
                             text={button.buttonId}
+                            pluginLocation={button.activityList[0].pluginLocation}
+                            activity={button.activityList[0].activity}
                         />
                     })}
                 </div>
-                <div style={{ marginBottom: '8px', paddingLeft: '30px' }}>
-                    <h3 style={{ fontWeight: '400' }}>Work List Panel</h3>
+                <div style={{ marginBottom: '8px', paddingLeft: '16px' }}>
+                    <h4 style={{ fontWeight: '400' }}>Work List Panel</h4>
                 </div>
                 <hr />
             </div>

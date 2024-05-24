@@ -29,13 +29,13 @@ function TimingBar() {
 
   return (
     <section style={{marginTop:'10px'}}>
-      <header style={{ width: '90%',textAlign: 'end'  }}>
+      <header style={{ width: '93%',textAlign: 'end'  }}>
         <small style={{marginRight:'3px'}}>{time}</small>
         {/* <FontAwesomeIcon icon="fa-regular fa-share-from-square" /> */}
         <IosShareIcon sx={{fontWeight:'200',fontSize:'20px'}} style={{fontWeight:'200',color:'084c96'}} />
       </header>
     </section> 
-  );
+  ); 
 }
 
 export default TimingBar;

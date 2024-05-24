@@ -6,15 +6,13 @@ import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
 
 
-
 function Modal({ }) {
-
     const {isbool,ButtonText} = useContext(MyContext);
 
     return (
-        <section style={{position:'sticky',top:''}}>
+        <section style={{position:'sticky',top:'36px',marginTop:'10px' }}>
             {
-                isbool && <Stack sx={{ width: '100%' }} spacing={2}>
+                isbool && <Stack sx={{ width: '100%',fontSize:'8px'}} spacing={2}>
                 <Alert severity="success">
                   <AlertTitle>{ButtonText}</AlertTitle>
                 </Alert>

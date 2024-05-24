@@ -1,58 +1,84 @@
-import * as React from 'react';
-import { DataGrid } from '@mui/x-data-grid';
-import { height } from '@fortawesome/free-solid-svg-icons/fa0';
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import { MyContext } from './Context/MyProvider';
 
-const columns = [
-  { field: 'id', headerName: 'ID', width: 70,height:10 },
-  { field: 'firstName', headerName: 'First name', width: 130,height:10  },
-  { field: 'lastName', headerName: 'Last name', width: 130,height:10  },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 90,
-    height:10 
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,height:10 ,
-    valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-  },
-];
+function TableWorkList() {
+  const [columns, setColumns] = useState([]);
+  const [rows, setRows] = useState([]);
+  const { selectedRows, setSelectedRows, allSelected, setAllSelected } = useContext(MyContext);
 
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get('/Op1TableData.json'); // Adjust the path if needed
+        setColumns(data.columns);
+        setRows(data.rows);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-export default function DataTable() {
+    fetchData();
+  }, []);
+
+  const handleSelectRow = (id, name) => {
+    setSelectedRows(prevState => ({
+      ...prevState,
+      [id]: { selected: !prevState[id]?.selected, name }
+    }));
+  };
+
+  const handleSelectAll = () => {
+    const newSelectedRows = {};
+    rows.forEach(row => {
+      newSelectedRows[row.ID] = { selected: !allSelected, name: row.Name };
+    });
+    setSelectedRows(newSelectedRows);
+    setAllSelected(!allSelected);
+  };
+console.log(selectedRows,allSelected);
   return (
-    <section>
-        <div style={{ width:'85%', height: 400,marginTop:'10px' }}>
-      <DataGrid 
-      
-      rowHeight={30} 
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-          },
-        }}
-        pageSizeOptions={[5, 10]}
-        checkboxSelection
-      />
-    </div>
+    <section style={{ marginTop: '20px', marginBottom: '5px', paddingBottom: '20px', borderBottom: '2px solid #F7F7F7' }}>
+      <div className='DynamicTableContainer' style={{ width: '90%' }}>
+        <form>
+          <div className='DynamicTableInputContainer'>
+            <table className='DynamicTable'>
+              <thead>
+                <tr>
+                  <th style={{ width: '2px' }}>
+                    <input
+                      type="checkbox"
+                      checked={allSelected}
+                      onChange={handleSelectAll}
+                    />
+                  </th>
+                  {columns.map((column, index) => (
+                    <th key={index}>{column}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row, rowIndex) => (
+                  <tr key={rowIndex}>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked={!!selectedRows[row.ID]?.selected}
+                        onChange={() => handleSelectRow(row.ID, row.Name)}
+                      />
+                    </td>
+                    {columns.map((column, colIndex) => (
+                      <td key={colIndex}>{row[column]}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
     </section>
   );
 }
+
+export default TableWorkList;

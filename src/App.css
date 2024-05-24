@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 .ritsNav {
   /* border:2px solid red; */
@@ -62,7 +65,7 @@ section {
   display: flex;
   /* justify-content: center; */
   /* align-items: center; */
-  gap: 45px;
+  gap: 48px;
 
 }
 
@@ -97,6 +100,7 @@ input:focus{
   justify-content: center;
   align-items: center;
   gap: '40px';
+  margin-left: 165px;
 
 }
 
@@ -133,6 +137,7 @@ input:focus{
   margin-top: 15px;
   margin-bottom: 10px;
   
+  
 }
 
 .ButtonsNav>button{
@@ -154,7 +159,7 @@ input:focus{
   margin-left: 7px;
   border: none;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
 
 
 
@@ -164,4 +169,36 @@ input:focus{
 }
 
 
+
+.App {
+  font-family: Arial, sans-serif;
+  /* padding: 20px; */
+}
+
+.DynamicTableContainer {
+  margin: auto;
+}
+
+.DynamicTableInputContainer {
+  margin-bottom: 20px;
+}
+
+.DynamicTable {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.DynamicTable th, .DynamicTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.DynamicTable th {
+  background-color: #f2f2f2;
+}
+
+
+/* LoginPopup.css */
 
