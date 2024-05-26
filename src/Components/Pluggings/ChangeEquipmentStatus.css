@@ -1,0 +1,66 @@
+/* General styles */
+.change-equipment-status {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+  }
+  
+  /* Header styles */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header h2 {
+    margin: 0;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Form styles */
+  .form-container {
+    margin-top: 20px;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .form-row label {
+    width: 150px;
+    font-weight: bold;
+  }
+  
+  .form-row input,
+  .form-row select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in the width */
+    width: calc(100% - 16px); /* Subtract padding from total width */
+    max-width: 200px; /* Limit maximum width to prevent overflow */
+  }
+  
+  /* Button styles */
+  .update-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px;
+  }
+  

@@ -123,8 +123,14 @@ input:focus{
   color:#0A6ED1 ;
 }
 
-.SingleButton {
+Button {
   border: 2px solid goldenrod;
+}
+
+Button:hover{
+  color:white;
+  background-color:#0A6ED1 ;
+
 }
 
 .ButtonsNav{
@@ -140,26 +146,28 @@ input:focus{
   
 }
 
-.ButtonsNav>button{
+.ButtonsNav{
 
   color: #0565a9;
   border-radius: 4px;
-  padding: 6px;
+  padding: 9px;
   margin-left: 7px;
   border: none;
-  text-transform: uppercase;
-
+  text-transform: uppercase
 
 }
 
 .SingleButton{
   color: #0565a9;
   border-radius: 4px;
-  padding: 6px;
+  padding: 7px;
   margin-left: 7px;
   border: none;
   text-transform: uppercase;
   font-size: 11px;
+  text-decoration: none;
+  background-color: white;
+
 
 
 
@@ -201,4 +209,7 @@ input:focus{
 
 
 /* LoginPopup.css */
+
+
+
 

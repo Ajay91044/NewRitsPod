@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { MyContext } from '../Context/MyProvider';
+import { Link } from 'react-router-dom';
 
 const ScrapUnscarp = () => {
     const [formData, setFormData] = useState({ activity: 'Scrap', pcu: '', comments: '' });
@@ -91,7 +92,7 @@ const ScrapUnscarp = () => {
                     }
                 `}
             </style>
-           {isScrapOpen && <section className="ScrapUnscarpForm">
+           <section className="ScrapUnscarpForm">
                 <div className="container">
                     <div className="header">
                         <h4 style={{ margin: 0 }}>SCRAP/UNSCRAP</h4>
@@ -157,10 +158,10 @@ const ScrapUnscarp = () => {
                         </form>
                     </div>
                     <div className="close-button">
-                        <button className="close-button-inner" onClick={handleClose}>Close</button>
+                        <Link to='/' className="close-button-inner" onClick={handleClose}>Close</Link>
                     </div>
                 </div>
-            </section>}
+            </section>
         </>
     );
 };

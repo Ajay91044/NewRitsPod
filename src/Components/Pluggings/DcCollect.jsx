@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { MyContext } from '../Context/MyProvider';
+import { Link } from 'react-router-dom';
 
 const DcCollect = () => {
 
@@ -72,7 +73,7 @@ const DcCollect = () => {
                     }
                 `}
             </style>
-            {isDcCollectOpen && <section className="DcCollectForm">
+            <section className="DcCollectForm">
                 <div className="container">
                     <div className="header">
                         <h4 style={{ margin: 0 }}>DC Collect</h4>
@@ -102,10 +103,10 @@ const DcCollect = () => {
                         </table>
                     </div>
                     <div className="close-button">
-                        <button className="close-button-inner" onClick={handleClose}>Close</button>
+                        <Link to='/' className="close-button-inner" onClick={handleClose}>Close</Link>
                     </div>
                 </div>
-            </section>}
+            </section>
         </>
     );
 };

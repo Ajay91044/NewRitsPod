@@ -40,7 +40,7 @@
             "activitySequence": "10",
             "activity": "R_START_SRV",
             "type": "Services",
-            "url": "http://localhost:8080/app/v1/start-service/start",
+            "url": "http://localhost:4000/api/formdatas/getStartService",
             "pluginLocation": "",
             "clearsPcu": false,
             "fixed": false
@@ -62,7 +62,7 @@
             "activitySequence": "10",
             "activity": "R_COMPLT_SERVICE",
             "type": "Services",
-            "url": "http://localhost:8080/app/v1/pcucomplete-service/complete",
+            "url": "http://localhost:4000/api/formdatas/getCompleteService",
             "pluginLocation": "",
             "clearsPcu": false,
             "fixed": false
@@ -83,12 +83,12 @@
           {
             "activitySequence": "10",
             "activity": "R_SIGNOFF_SERVICE",
-            "type": "Service",
-            "url": "http://localhost:8080/app/v1/signoff-service/signoff",
+            "type": "Services",
+            "url": "http://localhost:4000/api/formdatas/getSignOffService",
             "pluginLocation": "",
             "clearsPcu": false,
             "fixed": false
-          }
+          } 
         ]
       },
       {
@@ -106,7 +106,7 @@
             "activitySequence": "10",
             "activity": "R_ASSY",
             "type": "UI5",
-            "url": "http://localhost:8585/rits/assemblyPlugin_app/index.html",
+            "url": "http://localhost:3000/src/Components/Pluggins/Assemble",
             "pluginLocation": "2",
             "clearsPcu": false,
             "fixed": false
@@ -128,7 +128,7 @@
             "activitySequence": "10",
             "activity": "R_DCCOLLECT",
             "type": "UI5",
-            "url": "http://localhost:8585/rits/dccollect_app/index.html",
+            "url": "http://localhost:3000/src/Components/Pluggins/dcCollect",
             "pluginLocation": "99",
             "clearsPcu": false,
             "fixed": false
@@ -172,7 +172,7 @@
             "activitySequence": "10",
             "activity": "R_CHANGE_EQUIPEMNT_STATUS",
             "type": "UI5",
-            "url": "/rits/changeEquipmentStatus_app/index.html",
+            "url": "http://localhost:3000/src/Components/Pluggins/changeEquipmentStatus",
             "pluginLocation": "5",
             "clearsPcu": false,
             "fixed": false
@@ -194,7 +194,7 @@
             "activitySequence": "10",
             "activity": "R_SCRAP_UNSCRAP",
             "type": "UI5",
-            "url": "/rits/scrap_app/index.html",
+            "url": "http://localhost:3000/src/Components/Pluggins/ScrapUnscrap",
             "pluginLocation": "99",
             "clearsPcu": false,
             "fixed": false
@@ -216,7 +216,7 @@
             "activitySequence": "10",
             "activity": "R_LOG_BUYOFF",
             "type": "UI5",
-            "url": "/rits/log_buy_off/index.html",
+            "url": "http://localhost:3000/src/Components/Pluggins/LoginPopup",
             "pluginLocation": "99",
             "clearsPcu": false,
             "fixed": false

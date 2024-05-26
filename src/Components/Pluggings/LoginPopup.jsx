@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { MyContext } from '../Context/MyProvider';
+import { Link } from 'react-router-dom';
 
 const LoginPopup = () => {
     const [formData, setFormData] = useState({ user: '', password: '' });
-    const { isLogOpen, setIsLogOpen } = useContext(MyContext);
+    const {getToHomePage,setgetToHomePage, isLogOpen, setIsLogOpen } = useContext(MyContext);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,8 +27,7 @@ const LoginPopup = () => {
 
     return (
         <>
-            {isLogOpen && (
-                <section style={{
+         <section style={{
                     position: 'fixed',
                     top: 0,
                     left: 0,
@@ -131,17 +131,16 @@ const LoginPopup = () => {
                             padding: '3px',
                             paddingRight:'10px'
                         }}>
-                            <button onClick={handleOnclick} style={{
+                            <Link to='/' onClick={handleOnclick} style={{
                                 color: '#1D62A8',
                                 backgroundColor: 'white',
                                 border: 'none',
                                 cursor: 'pointer',
                                 height:'33px'
-                            }}>Close</button>
+                            }}>Close</Link>
                         </div>
                     </div>
                 </section>
-            )}
         </>
     );
 };

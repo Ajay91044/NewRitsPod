@@ -7,56 +7,45 @@ import TimimingBar from './Components/TimimingBar';
 import DataTable from './Components/TableWorKList';
 import TimingBar from './Components/TimimingBar';
 import Modal from './Components/Modal';
-import { useState } from 'react';
-import MyProvider from './Components/Context/MyProvider';
+import { useContext, useState } from 'react';
+import MyProvider, { MyContext } from './Components/Context/MyProvider';
 import TaggingSystem from './Components/Tagging';
 import LoginPopup from './Components/Pluggings/LoginPopup.jsx'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import BrowserRouter as Router
 import SingleButton from './Components/SingleButton.jsx';
 import ScrapUnscarp from './Components/Pluggings/ScrapUnscrap.jsx';
 import DcCollect from './Components/Pluggings/DcCollect.jsx';
+import Assemble from './Components/Pluggings/Assemble.jsx';
+import ChangeEquipmentStatus from './Components/Pluggings/ChangeEquipmentStatus.jsx';
+import PnF from './PnF.jsx';
+import Rits from './Rits.js';
 
 function App() {
-  let [isbool, setIsbool] = useState(false);
+  // let [isbool, setIsbool] = useState(false);
 
-  let HideTheThreeInputs = () => {
-    if (!isbool) {
+// let {isbool,setIsbool } = useContext(MyContext);
 
-    }
-  }
+
+
 
   return (
-    <MyProvider>
-        <div className="App">
-          <header className="App-header">
-      <Router> {/* Wrap the entire application with Router */}
-            {/* <SingleButton /> */}
-            <RitsNavBar />
-            <Modal />
-            <ScrapUnscarp/>
-            <LoginPopup/>
-            <DcCollect/>
-
-            <TimingBar />
-            <ThreeInput />
-            <ButtonsNav />
-            <DataTable />
+    <>     
+              <Router>
             <Routes> 
-              {/* <Route path="/R_START_SRV" element={<LoginPopup />} /> */}
-              {/* <Route path="/R_COMPLT_SERVICE" element={< />} /> */}
-              {/* <Route path="/R_SIGNOFF_SERVICE" element={<LoginPopup />} /> */}
-              {/* <Route path="/R_ASSY" element={<LoginPopup />} /> */}
-              <Route path="/R_DCCOLLECT" element={<DcCollect />} />
+              <Route path="/" element={<Rits />}>
+              <Route path="dcCollect" element={<DcCollect />} />
+              <Route path="Assemble" element={<Assemble/>} />
+              <Route path="LoginPopup" element={<LoginPopup />} />
+              {/* <Route path="/" element={<Sign />} /> */}
               {/* <Route path="/R_WORKINSTRUCTION_PLUGIN" element={<LoginPopup />} /> */}
-              {/* <Route path="/R_CHANGE_EQUIPEMNT_STATUS" element={<LoginPopup />} /> */}
-              <Route path="/R_SCRAP_UNSCRAP" element={< ScrapUnscarp/>} />
-              <Route path="/R_LOG_BUYOFF" element={<LoginPopup />} />
-              {/* // <Route path="/R_TOOL_LOG" element={<LoginPopup />} /> */}
+              <Route path="changeEquipmentStatus" element={<ChangeEquipmentStatus />} />
+              <Route path="ScrapUnscrap" element={< ScrapUnscarp/>} />
+              <Route path="ToolLog" element={<LoginPopup />} />
+            </Route>
             </Routes>
       </Router>
-          </header>
-        </div>
-    </MyProvider>
+</>
+
   );
 }
 

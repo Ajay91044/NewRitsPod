@@ -10,7 +10,11 @@ const MyProvider = ({ children }) => {
   let [isLogOpen,setIsLogOpen]=useState(false); 
   let [isScrapOpen,setIsScrapOpen]=useState(false);
   let [isDcCollectOpen,setIsDcCollectOpen]=useState(false);
+  let [isAssembleOpen,setIsAssembleOpen]=useState(false);
+  let [isChangeEquipmentOpen,setIsChangeEquipmentOpen]=useState(false);
   
+  let [getToHomePage,setgetToHomePage]=useState('http://localhost:3000') 
+
     // Fetch button data from API or any other source and set it using setButtonData
 
     return (
@@ -19,7 +23,9 @@ const MyProvider = ({ children }) => {
         allSelected, setAllSelected,
         isLogOpen ,setIsLogOpen,
         isScrapOpen,setIsScrapOpen,
-        isDcCollectOpen,setIsDcCollectOpen}}>
+        isDcCollectOpen,setIsDcCollectOpen,
+        isAssembleOpen,setIsAssembleOpen,
+        isChangeEquipmentOpen,setIsChangeEquipmentOpen}}>
             {children} 
         </MyContext.Provider>
     );

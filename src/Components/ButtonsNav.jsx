@@ -5,8 +5,6 @@ import SingleButton from './SingleButton';
 function ButtonsNav(setIsbool) {
     const [dynamicData, setDynamicData] = useState([]);
     
-    
-
     useEffect(() => { 
         const fetchData = async () => {
             try {
@@ -27,7 +25,8 @@ function ButtonsNav(setIsbool) {
             <div style={{ width: '93%' }}>
                 <div className="ButtonsNav">
                     {dynamicData.map((button) => 
-                    {                  
+                    {  console.log(button.activityList[0].url)
+
                       return  <SingleButton
                             key={button.sequence}
                             buttonLabel={button.buttonLabel}
@@ -36,6 +35,7 @@ function ButtonsNav(setIsbool) {
                             text={button.buttonId}
                             pluginLocation={button.activityList[0].pluginLocation}
                             activity={button.activityList[0].activity}
+                            type={button.activityList[0].type}
                         />
                     })}
                 </div>

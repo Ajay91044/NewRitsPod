@@ -1,57 +1,55 @@
-import React, { act, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { MyContext } from './Context/MyProvider';
-import { useNavigate } from 'react-router-dom'; // Import only useNavigate
+import { Link, useNavigate } from 'react-router-dom'; // Import only useNavigate
 import ButtonRoutes from './Routes/ButtonRoutes';
+import axios from 'axios';
 
-function SingleButton({ buttonLabel, url, text, pluginLocation,activity }) {
-  
-  const { setIsbool, setButtonText } = useContext(MyContext);
-  const { IsLogOpen, setIsLogOpen } = useContext(MyContext);
-  const { isScrapOpen,setIsScrapOpen} = useContext(MyContext);
-  const {isDcCollectOpen,setIsDcCollectOpen} = useContext(MyContext);
+function SingleButton({ buttonLabel, url, text, pluginLocation, activity, type }) {
 
-  const navigate = useNavigate(); 
-  
+  const {setIsbool, setButtonText, IsLogOpen, setIsLogOpen, isScrapOpen, setIsScrapOpen, isDcCollectOpen, setIsDcCollectOpen, isAssembleOpen, setIsAssembleOpen, isChangeEquipmentOpen, setIsChangeEquipmentOpen } = useContext(MyContext);
+  const navigate = useNavigate();
 
-  // Rename navigate variable to avoid naming conflict
-  // You can now access buttonData and use it as needed
+  let [urlLink, seturlLink] = useState('')
 
-  const handleButtonClick = (activity,pluginLocation) => {
-    // Handle button click action here
-
-
-    if (pluginLocation === '') {
-      setIsbool(true);
-      setButtonText(text);
-    
-    }
-    console.log(activity);
-    // else if(pluginLocation ==''||pluginLocation =="2"||pluginLocation =="3"||pluginLocation =="5"||pluginLocation =="99")
-    // {  
-    //   navigate(activity);
-    // }
-    switch(activity)
+  const handleButtonClick = (activity, pluginLocation, type, url) => 
     {
-      case "R_LOG_BUYOFF": setIsLogOpen(true);break;
-      case "R_SCRAP_UNSCRAP":setIsScrapOpen(true);break;
-      case "R_DCCOLLECT":setIsDcCollectOpen(true);break;
+    console.log(url)
+    if (type === "Services")
+       {     
+      let fetchApi=async()=>
+        {
+          let {data}=await axios.get(url);
+          let msg=data.message
+          console.log(msg);
+          setButtonText(msg);
+          setIsbool(true);
+          // seturlLink('/');
+          setTimeout(() => {
+            setIsbool(false);
+          }, 5000);
+          
+        }
+        fetchApi();
+    
+    }
+   else if(type==='UI5')
+    {
+      const parts = url.split('/'); // Split the URL by '/'
+      const lastPartIndex = parts.length - 1;
+      const lastPartWithSlash = `${parts[lastPartIndex]}`; // Include the slash with the last part
+     seturlLink(lastPartWithSlash);
 
     }
-  
-
-    
 
     console.log(`Button with label "${buttonLabel}" clicked. URL: ${url}`);
   };
-  setTimeout(() => {
-    setIsbool(false);
-  }, 5000);
+  console.log(urlLink);
 
   return (
     <div>
-      <button onClick={() => handleButtonClick(activity,pluginLocation)} className='SingleButton'>
+      <Link to={urlLink} onClick={() => handleButtonClick(activity, pluginLocation, type, url)} className='SingleButton'>
         {buttonLabel}
-      </button>
+      </Link>
     </div>
   );
 }
